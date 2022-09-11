@@ -9,9 +9,9 @@ export function sortStrings(arr, param = 'asc') {
 
   const compareStrings = (str1, str2) => {
     if (param === 'asc') {
-      return str1.localCompare(str2, ['ru', 'en'], {caseFirst: 'upper'});
+      return str1.localeCompare(str2, ['ru', 'en'], { caseFirst: 'upper' });
     } else {
-      return str2.localCompare(str1, ['ru', 'en'], {caseFirst: 'upper'});
+      return str2.localeCompare(str1, ['ru', 'en'], { caseFirst: 'upper' });
     }
   };
 
