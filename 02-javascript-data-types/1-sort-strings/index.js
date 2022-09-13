@@ -7,13 +7,14 @@
 export function sortStrings(arr, param = 'asc') {
   const sortedStrings = [...arr];
 
-  const compareStrings = (str1, str2) => {
-    if (param === 'asc') {
-      return str1.localeCompare(str2, ['ru', 'en'], { caseFirst: 'upper' });
-    } else {
-      return str2.localeCompare(str1, ['ru', 'en'], { caseFirst: 'upper' });
-    }
+  const directions = {
+    asc: 1,
+    desc: -1,
   };
 
-  return sortedStrings.sort(compareStrings);
+  const direction = directions[param];
+
+  return sortedStrings.sort((str1, str2) => {
+    return direction * str1.localeCompare(str2, ['ru', 'en'], { caseFirst: 'upper' });
+  });
 }
