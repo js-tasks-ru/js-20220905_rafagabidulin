@@ -6,4 +6,30 @@
  */
 export function trimSymbols(string, size) {
 
+  if (size === 0) {
+    return '';
+  }
+
+  if (size === undefined) {
+    return string;
+  }
+
+  const arrayOfSymbols = [...string];
+
+  let countSymbols = 1;
+
+  const trimmedArray = arrayOfSymbols.reduce((acc, char) => {
+    if (char === acc[acc.length - 1] && countSymbols < size) {
+      acc.push(char);
+      countSymbols += 1;
+    } else if (char !== acc[acc.length - 1]) {
+      acc.push(char);
+      countSymbols = 1;
+    }
+    return acc;
+  }, []);
+  
+  const trimmedString = trimmedArray.join('');
+
+  return trimmedString;
 }
