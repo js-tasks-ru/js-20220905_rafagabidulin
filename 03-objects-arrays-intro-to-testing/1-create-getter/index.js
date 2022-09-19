@@ -6,12 +6,12 @@
 export function createGetter(path) {
   const props = path.split('.');
 
-  return function(obj) {
+  return function (obj) {
     let result = obj;
 
     for (const prop of props) {
       if (result === undefined) {
-        return undefined;
+        return;
       }
       result = result[prop];
     }
