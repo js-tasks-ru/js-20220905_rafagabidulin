@@ -10,7 +10,6 @@ export default class SortableTable {
     this.headerConfig = headersConfig;
     this.data = data;
     this.sorted = sorted;
-    this.sortedBy = sorted.id;
 
     this.render();
     this.initEventListeners();
