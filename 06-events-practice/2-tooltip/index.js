@@ -1,13 +1,13 @@
 class Tooltip {
-  static tooltip;
+  static instance;
   element;
   prevTarget;
 
   constructor() {
-    if (!Tooltip.tooltip) {
-      Tooltip.tooltip = this;
+    if (!Tooltip.instance) {
+      Tooltip.instance = this;
     }
-    return Tooltip.tooltip;
+    return Tooltip.instance;
   }
 
   initialize() {
@@ -70,9 +70,9 @@ class Tooltip {
   }
 
   destroy() {
-    document.body.removeEventListener('pointerover', this.onPointerOverHandler);
-    document.body.removeEventListener('pointerout', this.onPointerOutHandler);
-    document.body.removeEventListener('pointermove', this.onMouseMoveHandler);
+    document.body.removeEventListener('pointerover', this.onPointerOver);
+    document.body.removeEventListener('pointerout', this.onPointerOut);
+    document.body.removeEventListener('pointermove', this.onMouseMove);
     this.remove();
     Tooltip.tooltip = null;
     this.element = null;
