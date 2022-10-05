@@ -39,8 +39,8 @@ export default class ProductForm {
     const categories = await fetchJson(this.categoriesUrl);
 
     const categoriesOptions = categories.map((category) => {
-      return category.subcategories.map((subCategory) => {
-        return `<option value=\"${subCategory.id}\">${category.title} &gt; ${subCategory.title}</option>`;
+      return category.subcategories.map((subcategory) => {
+        return `<option value=\"${subcategory.id}\">${category.title} &gt; ${subcategory.title}</option>`;
       }).join('');
     }).join('');
 
@@ -211,6 +211,7 @@ export default class ProductForm {
         imageListContainer.append(this.getImageItem(result.data.link, file.name));
 
         this.subElements.uploadImage.classList.remove('is-loading');
+        this.subElements.uploadImage.disabled = true;
 
         fileInput.remove();
       }
